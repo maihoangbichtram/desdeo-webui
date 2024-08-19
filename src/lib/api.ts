@@ -39,7 +39,7 @@ type OAuth2Response = {
 // TODO: Move this to a configuration file.
 //
 
-export const baseURL = "https://api-desdeo-test.2.rahtiapp.fi/";
+export const baseURL = "https://api-desdeo-test.2.rahtiapp.fi";
 
 /** A missing token is represented by `undefined`. */
 export type Token = string | undefined;
