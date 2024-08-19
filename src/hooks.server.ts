@@ -6,7 +6,7 @@ skio
   .setup(3001, {
     cors: {
       //origin: "http://localhost:5173",
-      origin: "http://webui.desdeo-test.svc.cluster.local:3000",
+      origin: "http://0.0.0.0:3000",
       credentials: true,
     },
   })

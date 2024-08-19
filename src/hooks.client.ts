@@ -4,10 +4,10 @@ import type { Socket } from "socket.io-client";
 
 if (!skio.started()) {
   skio
-    .setup(3001, {
+    .setup("http://socket-io.desdeo-test.svc.cluster.local:3001", {
       cors: {
         //origin: "http://localhost:5173",
-        origin: "http://webui.desdeo-test.svc.cluster.local:3000",
+        origin: "http://0.0.0.0:3000",
         credentials: true,
         transports: ["websocket"],
         "force new connection": true,
