@@ -32,16 +32,14 @@ export async function setup(
     host = `http://0.0.0.0:${host}`;
   }
 
-  if (host) {
-    config = {
-      host: new URL(host),
-      options: { ...options },
-    };
-  }
+  config = {
+    host: host ? new URL(host) : null,
+    options: { ...options },
+  };
 
   if (typeof window !== "undefined") {
     const client = (await import("socket.io-client")).default;
-    return (instance = client(host ? config.host.href : ''));
+    return (instance = client(config.host ? config.host.href : ''));
   }
 
   const { createServer } = await import("http");

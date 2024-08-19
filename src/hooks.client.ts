@@ -8,9 +8,9 @@ if (!skio.started()) {
       cors: {
         //origin: "http://localhost:5173",
         // origin: "http://0.0.0.0:3000",
-        credentials: true,
         transports: ["websocket"],
         "force new connection": true,
+        credentials: true,
       },
     })
     .then((socket: Socket | SocketIOServer) => {

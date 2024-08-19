@@ -1,5 +1,5 @@
 import { Server } from 'socket.io';
-import serverEvents from './serverEvents';
+import serverEvents from './serverEvents.js';
 import socketEvents from './socketEvents.js';
 
 export default (options = {}) => ({
