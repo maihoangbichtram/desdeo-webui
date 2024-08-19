@@ -29,7 +29,7 @@ export async function setup(
   }
 
   if (typeof host === "number") {
-    host = `http://0.0.0.0:${host}`;
+    host = `http://localhost:${host}`;
   }
 
   config = {
