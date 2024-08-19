@@ -6,7 +6,7 @@ skio
   .setup(3001, {
     cors: {
       //origin: "http://localhost:5173",
-      origin: "http://localhost:8080",
+      origin: "http://0.0.0.0:8080",
       credentials: true,
     },
   })
