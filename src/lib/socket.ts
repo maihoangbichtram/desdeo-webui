@@ -20,7 +20,7 @@ export function started(): boolean {
 }
 
 export async function setup(
-  host: string | number,
+  host: string | number | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any> = {}
 ): Promise<Socket | SocketIOServer> {
@@ -32,14 +32,16 @@ export async function setup(
     host = `http://0.0.0.0:${host}`;
   }
 
-  config = {
-    host: new URL(host),
-    options: { ...options },
-  };
+  if (host) {
+    config = {
+      host: new URL(host),
+      options: { ...options },
+    };
+  }
 
   if (typeof window !== "undefined") {
     const client = (await import("socket.io-client")).default;
-    return (instance = client(config.host.href));
+    return (instance = client(host ? config.host.href : ''));
   }
 
   const { createServer } = await import("http");

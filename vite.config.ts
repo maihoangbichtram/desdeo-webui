@@ -1,6 +1,7 @@
 import { sveltekit } from "@sveltejs/kit/vite";
 import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vitest/config";
+import vitePluginSocketIO from './src/socketio.js'
 
 // If you get "Plugin_2 is not assignable to PluginOption"
 // try deleting node_modules and reinstalling
@@ -11,6 +12,7 @@ export default defineConfig({
     Icons({
       compiler: "svelte",
     }),
+    vitePluginSocketIO()
   ],
   test: {
     include: ["src/**/*.{test,spec}.{js,ts}"],
