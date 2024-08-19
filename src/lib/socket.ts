@@ -20,7 +20,7 @@ export function started(): boolean {
 }
 
 export async function setup(
-  host: string | number,
+  host: string | number | null,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any> = {}
 ): Promise<Socket | SocketIOServer> {
@@ -29,7 +29,7 @@ export async function setup(
   }
 
   if (typeof host === "number") {
-    host = `http://0.0.0.0:${host}`;
+    host = `http://socket-io.desdeo-test.svc.cluster.local:${host}`;
   }
 
   config = {

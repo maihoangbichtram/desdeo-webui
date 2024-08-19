@@ -7,7 +7,7 @@ if (!skio.started()) {
     .setup(3001, {
       cors: {
         //origin: "http://localhost:5173",
-        origin: "http://0.0.0.0:8080",
+        origin: "http://webui.desdeo-test.svc.cluster.local:3000",
         credentials: true,
         transports: ["websocket"],
         "force new connection": true,
@@ -23,3 +23,5 @@ if (!skio.started()) {
       });
     });
 }
+
+
