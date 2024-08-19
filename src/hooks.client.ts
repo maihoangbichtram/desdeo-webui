@@ -2,7 +2,7 @@ import skio from "$lib/socket.js";
 import type { Server as SocketIOServer } from "socket.io";
 import type { Socket } from "socket.io-client";
 
-if (!skio.started()) {
+/*if (!skio.started()) {
   skio
     .setup(3001, {
       cors: {
@@ -22,4 +22,4 @@ if (!skio.started()) {
         }
       });
     });
-}
+}*/
