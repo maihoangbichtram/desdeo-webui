@@ -2,9 +2,9 @@ import skio from "$lib/socket.js";
 import type { Server as SocketIOServer } from "socket.io";
 import type { Socket } from "socket.io-client";
 
-/*if (!skio.started()) {
+if (!skio.started()) {
   skio
-    .setup(3001, {
+    .setup(3002, {
       cors: {
         //origin: "http://localhost:5173",
         origin: "http://localhost:8080",
@@ -22,4 +22,4 @@ import type { Socket } from "socket.io-client";
         }
       });
     });
-}*/
+}

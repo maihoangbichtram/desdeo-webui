@@ -2,8 +2,8 @@ import skio from "$lib/socket.js";
 import type { Server, Socket } from "socket.io";
 import type { Socket as SocketClient } from "socket.io-client";
 
-/*skio
-  .setup(3001, {
+skio
+  .setup(3002, {
     cors: {
       //origin: "http://localhost:5173",
       origin: "http://localhost:8080",
@@ -168,4 +168,4 @@ import type { Socket as SocketClient } from "socket.io-client";
       .adapter.on("join-room", (room: string, id: string) => {
         console.log(`socket ${id} has joined room ${room}`);
       });
-  });*/
+  });
