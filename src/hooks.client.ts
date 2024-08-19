@@ -4,7 +4,7 @@ import type { Socket } from "socket.io-client";
 
 if (!skio.started()) {
   skio
-    .setup(3002, {
+    .setup(3001, {
       cors: {
         //origin: "http://localhost:5173",
         origin: "http://localhost:8080",
