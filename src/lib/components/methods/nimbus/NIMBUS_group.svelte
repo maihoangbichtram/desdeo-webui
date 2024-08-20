@@ -211,7 +211,13 @@ A user interface for the NIMBUS method.
           reference_solution![index] * max_multiplier![index]
       );
 
-      if (pref_less_ref && pref_greater_ref) {
+      const pref_equal_nadir_ref = preference.some(
+        (value, index) => {
+          return value === (max_multiplier![index] > 0 ? problemInfo['upper_bounds'][index] : problemInfo['lower_bounds'][index])
+        }
+      );
+      
+      if (pref_less_ref && pref_greater_ref && !pref_equal_nadir_ref) {
         classification_checker = true;
       } else {
         classification_checker = false;
