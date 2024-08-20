@@ -216,7 +216,7 @@ A user interface for the NIMBUS method.
           return value === (max_multiplier![index] > 0 ? problemInfo['upper_bounds'][index] : problemInfo['lower_bounds'][index])
         }
       );
-      
+
       if (pref_less_ref && pref_greater_ref && !pref_equal_nadir_ref) {
         classification_checker = true;
       } else {
@@ -495,14 +495,6 @@ A user interface for the NIMBUS method.
     });
 
   async function handle_caller(action: string, args = {}) {
-    console.log("handle_caller", action);
-    let requestId = 0;
-    if (action !== "initialize") {
-      requestId = await save_request(action, args);
-    }
-
-    socketVal.emit("add-action", action, requestId);
-
     const executeAction = (requestIds: number[]) => {
       handle_functions[action](requestIds).then((res: number) => {
         if (res) {
@@ -514,6 +506,14 @@ A user interface for the NIMBUS method.
     };
 
     socketVal.off("execute-" + action).once("execute-" + action, executeAction);
+
+    console.log("handle_caller", action);
+    let requestId = 0;
+    if (action !== "initialize") {
+      requestId = await save_request(action, args);
+    }
+
+    socketVal.emit("add-action", action, requestId);
   }
 
   function press_final_button() {
@@ -562,6 +562,7 @@ A user interface for the NIMBUS method.
   // TODO: Handle errors bettter.
   //
   async function handle_initialize() {
+    console.log("handle_initialize")
     try {
       let endpoint = `${API_URL}/${API_ROUTER}/initialize`;
 
