@@ -16,8 +16,13 @@ if (!skio.started()) {
     .then((socket: Socket | SocketIOServer) => {
       (socket as Socket).on("connect", () => {
         if (socket) {
-          socket.on("message", (message) => {
+          (socket as Socket).off("message").on("message", (message) => {
             console.log(message);
+          });
+
+          socket.on("disconnect", () => {
+            console.log("Server: disconnected");
+            socket.close();
           });
         }
       });

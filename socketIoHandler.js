@@ -47,6 +47,10 @@ export default function injectSocketIO(server) {
 
         socket.on("add-action", (action, requestId) => {
             const executeAction = requestIds => {
+                console.log("executeAction", requestIds);
+                socket.to(roomID).emit("message", {
+                    message: `Server: ${socket.id} about to execute action ${action}`,
+                });
                 socket.emit(`execute-${action}`, requestIds)
                 socket
                     .to(roomID)
@@ -112,7 +116,10 @@ export default function injectSocketIO(server) {
 
                 executeAction(requestIds)
             } else {
-                actionTimeouts.set(roomID, setTimeout(executeAction, 10000, requestIds))
+                socket.emit("message", {
+                    message: `Server: Wait for other DMs....`,
+                });
+                actionTimeouts.set(roomID, setTimeout(executeAction, 600000, requestIds))
             }
         })
 
