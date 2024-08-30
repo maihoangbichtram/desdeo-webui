@@ -5,10 +5,10 @@ import type { Server as HttpServer } from "http";
 let server: HttpServer | null = null;
 let instance: Socket | SocketIOServer | null = null;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-let config: { host: URL; options: Record<string, any> } | null = null;
+let config: { host: URL | null; options: Record<string, any> } | null = null;
 
 export function getConfig(): {
-  host: URL;
+  host: URL | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any>;
 } | null {
@@ -39,7 +39,7 @@ export async function setup(
 
   if (typeof window !== "undefined") {
     const client = (await import("socket.io-client")).default;
-    return (instance = client(config.host ? config.host.href : ''));
+    return (instance = client(config.host ? config.host.href : ""));
   }
 
   const { createServer } = await import("http");
@@ -49,9 +49,13 @@ export async function setup(
   instance = new Server(server, config.options);
 
   return new Promise<SocketIOServer>((resolve) => {
-    server?.listen(Number(config?.host.port), config?.host.hostname, () => {
-      resolve(instance as SocketIOServer);
-    });
+    server?.listen(
+      Number(config?.host?.port || 3000),
+      config?.host?.hostname || "localhost",
+      () => {
+        resolve(instance as SocketIOServer);
+      }
+    );
   });
 }
 

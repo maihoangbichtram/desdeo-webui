@@ -211,11 +211,14 @@ A user interface for the NIMBUS method.
           reference_solution![index] * max_multiplier![index]
       );
 
-      const pref_equal_nadir_ref = preference.some(
-        (value, index) => {
-          return value === (max_multiplier![index] > 0 ? problemInfo['upper_bounds'][index] : problemInfo['lower_bounds'][index])
-        }
-      );
+      const pref_equal_nadir_ref = preference.some((value, index) => {
+        return (
+          value ===
+          (max_multiplier![index] > 0
+            ? problemInfo["upper_bounds"][index]
+            : problemInfo["lower_bounds"][index])
+        );
+      });
 
       if (pref_less_ref && pref_greater_ref && !pref_equal_nadir_ref) {
         classification_checker = true;
@@ -562,7 +565,7 @@ A user interface for the NIMBUS method.
   // TODO: Handle errors bettter.
   //
   async function handle_initialize() {
-    console.log("handle_initialize")
+    console.log("handle_initialize");
     try {
       let endpoint = `${API_URL}/${API_ROUTER}/initialize`;
 
