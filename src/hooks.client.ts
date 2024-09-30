@@ -6,6 +6,8 @@ if (!skio.started()) {
   skio
     .setup(null, {
       cors: {
+        //origin: "http://localhost:5173",
+        // origin: "http://0.0.0.0:3000",
         transports: ["websocket"],
         "force new connection": true,
         credentials: true,

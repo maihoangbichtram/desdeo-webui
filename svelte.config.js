@@ -1,6 +1,11 @@
 import preprocess from "svelte-preprocess";
-import adapter from "@sveltejs/adapter-static";
-import { vitePreprocess } from "@sveltejs/kit/vite";
+import adapter from "@sveltejs/adapter-node";
+import {sveltekit, vitePreprocess} from "@sveltejs/kit/vite";
+import Icons from "unplugin-icons/vite";
+import vitePluginSocketIO from "./src/socketio.js";
+import serverEvents from "./src/serverEvents.js";
+import socketEvents from "./src/socketEvents.js";
+import {Server} from "socket.io";
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
